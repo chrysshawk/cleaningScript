@@ -1,7 +1,10 @@
-# setwd("F:/Work documents/R/GitHub/CleaningProject/")
+# Run_analysis is a function requiring the user to have installed the packages DPLYR
+# It reads data from <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>, 
+# combines and cleans the data, and outputs it to tidyData.csv,
+# which contains the variables activity, subjectid, avgmean, and avgsdev
 
 run_analysis <- function(){
-     # 1. Merge the training and the test data sets
+     # 1. Merging the training and the test data sets
      
      # Reading Train - and Test files
      yTrain <- read.table("./UCI HAR Dataset/train/y_train.txt", sep = "", 
@@ -16,46 +19,35 @@ run_analysis <- function(){
      dfTest <- cbind(yTest, xTest)
      dfData <- rbind(dfTrain, dfTest)
 
-     # 2. Extract only the measurements on the mean and standard deviation
-     # for each measurement
+     # 2. Extracting measurements on the mean and standard deviation
      obsmean <- apply(dfData[,2:ncol(dfData)], 1, mean)
      obssdev <- apply(dfData[,2:ncol(dfData)], 1, sd)
      
-     # Creating new tidy dataframe
+     # Creating new data frame with activity, obsmean, and obssdev
      obsDF <- cbind(dfData[1], obsmean, obssdev)
      
      # 3. Use descriptive activity names to name the activities in the data set
      actLabels <- read.table("./UCI HAR Dataset/activity_labels.txt")
      colnames(actLabels) <- c("actid", "activity")
      
-     # Merging activity labels into dfData (avoiding sorting) & dropping the activity id
+     # Merging activity labels into obsDF & dropping the activity id
      obsDF <- merge(obsDF, actLabels, by.x = "V1", by.y = "actid", sort = FALSE)
      obsDF <- obsDF[-1]
      
-     # 4. Appropriately label the data set with descriptive variable names
-     # ...Already done
+     # 4. Data set is already labeled with appropriate variable names
 
-     # 5. From (4), create a second, independent data set with the average
+     # 5. From (4), creating a second, independent data set with the average
      # of each variable for each activity and each subject
      
-     # Loading the subject data into the data frame and formatting
+     # Reading and including the subject data into the data frame and formatting
      trainSub <- read.table("./UCI HAR Dataset/train/subject_train.txt", sep = "")
      testSub <- read.table("./UCI HAR Dataset/test/subject_test.txt", sep = "")
      subDF <- rbind(trainSub, testSub)
      completeDF <- cbind(subDF, obsDF)
      colnames(completeDF)[1] <- "subjectid"
      
-     # Adding column with average
-     tDF <- mutate(completeDF, mean(completeDF$obsmean+completeDF$obssdev))
-     
-     # Using DPLYR to create the new data set
+     # Loading DPLYR for subsequent operations
      library(dplyr)
-     
-     # this is correct according to excel:
-     # tidyData <- completeDF %>%
-     #     group_by(activity, subjectid) %>%
-     #     summarize(avg = mean((obsmean+obssdev)/2)) %>%
-     #     arrange(activity)
      
      # Grouping activity and subjectid to calculate mean of observation mean and mean of
      # standard deviation mean
@@ -66,7 +58,5 @@ run_analysis <- function(){
           arrange(activity)
      
      # Exporting table as csv
-     write.table(tidyData,"tidyData.csv",sep=",",row.names=FALSE)
-     
-     
+     write.table(tidyData,"tidyData.csv",sep=",",row.names=FALSE)     
 }

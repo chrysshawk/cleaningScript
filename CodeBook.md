@@ -144,7 +144,7 @@ Variables:
 
 ## Details of second (output) dataset
 
-The output is "tidyMeasurements.csv" which has column names as headers.
+The output is "tidyMeasurements.csv" which has column names as headers. This is a tidy dataset where there is one observation per row, and each column represents a different variable. To avoid typos, all variable names are lowercase.
 
 Dimensions: 4 columns, 180 rows.
 

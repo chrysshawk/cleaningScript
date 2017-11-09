@@ -41,10 +41,9 @@ With the zip archive extracted, the script reads data from these files:
 
 2. Operations are performed on data
 * Columns of subject, activity, and all columns containing the words "mean" and "std" (standard deviation) are extracted to new table. This represents the first dataset.
-* A second, independent data set is created, where 2 new calculated variables are added per row, row average of the "mean" variables, and row average of the "std" variables
-* A new table is created, containing only the activity (name), the subject id, and the average of the means and the average of the std (standard deviation) variables. These are grouped by activity and subject id, and sorted by activity.
+* A second, independent dataset is created. It is based on the above data set, but it creates two new columns; the row averages of the "mean" and of the "std" variables. The other "mean" and "std" columns are removed. It thus contains only the activity (name), the subject id, and the average of the means and the average of the std (standard deviation) variables. These are grouped by activity and subject id, and sorted by activity.
 
-3. This resulting table is exported to file "tidyMeasurements.csv".
+3. The resulting table is exported to file "tidyMeasurements.csv".
 
 ## Details of first dataset
 This is the dataset first created. It contains the subject all the measurements of mean and standard deviations.
@@ -149,9 +148,9 @@ The output is "tidyMeasurements.csv" which has column names as headers.
 
 Dimensions: 4 columns, 180 rows.
 
-Columns: "activity" "subjectid" "avgmean" "avgstd":
+Columns: "activity" "subjectid" "avgmean" "avgstdeviation":
 
 1. activity : Factor w/ 6 levels (LAYING, SITTING, STANDING, WALKING, WALKING_DOWNSTAIRS, WALKING_UPSTAIRS). This is the name of the activity measured.
 2. subjectid: int. This represents each of the (1 to 30) subjects which were measured. 
 3. avgmean  : num. This is the average of all mean measurements per subject.
-4. avgstd   : num. This is the average of all the standard deviations per subject.
+4. avgstdeviation : num. This is the average of all the standard deviations per subject.

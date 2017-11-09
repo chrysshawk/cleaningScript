@@ -145,7 +145,7 @@ Variables:
 
 ## Details of second (output) dataset
 
-The output is "tidyMeasurements.csv".
+The output is "tidyMeasurements.csv" which has column names as headers.
 
 Dimensions: 4 columns, 180 rows.
 

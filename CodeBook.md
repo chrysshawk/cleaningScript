@@ -1,7 +1,7 @@
 # CodeBook
 
 ## Overview
-This codebook describes how data is transformed from raw data to create two datasets. The first dataset is used as a means to create the second dataset, which is outputted to the file "tidyMeasurements.csv"
+This codebook describes how data is transformed from raw data to create two datasets. The first dataset is used as a means to create the second dataset, which is outputted to the file "tidyMeasurements.txt"
 
 ## Input
 The original data files are found at below URL. The assumption is that the user downloads and extracts this in the working directory.
@@ -43,7 +43,7 @@ With the zip archive extracted, the script reads data from these files:
 * Columns of subject, activity, and all columns containing the words "mean" and "std" (standard deviation) are extracted to new table. This represents the first dataset.
 * A second, independent dataset is created. It is based on the above data set, but it creates two new columns; the row averages of the "mean" and of the "std" variables. The other "mean" and "std" columns are removed. It thus contains only the activity (name), the subject id, and the average of the means and the average of the std (standard deviation) variables. These are grouped by activity and subject id, and sorted by activity.
 
-3. The resulting table is exported to file "tidyMeasurements.csv".
+3. The resulting table is exported to file "tidyMeasurements.txt".
 
 ## Details of first dataset
 This is the dataset first created. It contains the subject all the measurements of mean and standard deviations.
@@ -144,7 +144,7 @@ Variables:
 
 ## Details of second (output) dataset
 
-The output is "tidyMeasurements.csv" which has column names as headers. This is a tidy dataset where there is one observation per row, and each column represents a different variable. To avoid typos, all variable names are lowercase.
+The output is "tidyMeasurements.txt" which has column names as headers. This is a tidy dataset where there is one observation per row, and each column represents a different variable. To avoid typos, all variable names are lowercase.
 
 Dimensions: 4 columns, 180 rows.
 

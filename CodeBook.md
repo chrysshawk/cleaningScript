@@ -48,8 +48,11 @@ With the zip archive extracted, the script reads data from these files:
 
 ## Details of first dataset
 This is the dataset first created. It contains the subject all the measurements of mean and standard deviations.
-Dimensions: 88 columns, 10299 rows
+
+Dimensions: 88 columns, 10299 rows.
+
 Variables:
+
 * activity : Factor w/ 6 levels (LAYING, SITTING, STANDING, WALKING, WALKING_DOWNSTAIRS, WALKING_UPSTAIRS). This is the name of the activity measured.
 * subjectid: int. This represents each of the (1 to 30) subjects which were measured.
 * The measurement variables of mean- and std:
@@ -143,8 +146,11 @@ Variables:
 ## Details of second (output) dataset
 
 The output is "tidyMeasurements.csv".
-Dimensions: 4 columns, 180 rows
-Columns: "activity" "subjectid" "avgmean" "avgstd"
+
+Dimensions: 4 columns, 180 rows.
+
+Columns: "activity" "subjectid" "avgmean" "avgstd":
+
 1. activity : Factor w/ 6 levels (LAYING, SITTING, STANDING, WALKING, WALKING_DOWNSTAIRS, WALKING_UPSTAIRS). This is the name of the activity measured.
 2. subjectid: int. This represents each of the (1 to 30) subjects which were measured. 
 3. avgmean  : num. This is the average of all mean measurements per subject.
